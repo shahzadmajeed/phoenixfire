@@ -3,17 +3,18 @@
 
 #include "cocos2d.h"
 
-static const float BULLET_INTERVAL = 2;
-static const int BULLET_SPEED = 200;
-
-class Bullet
+class Bullet : public cocos2d::CCSprite
 {
 private:
-	cocos2d::CCPoint *position;
+	int speed;
+
+	cocos2d::CCSprite *bulletSprite;
 
 public:
-	cocos2d::CCPoint* getPosition();
-	Bullet(cocos2d::CCPoint *position);
+	static Bullet* create(const char *pszFileName, cocos2d::CCPoint position, int speed);
+	void setBulletPosition(cocos2d::CCPoint position);
+	void setBulletSpeed(int speed);
+	void updateBullet(float delta);
 };
 
 #endif

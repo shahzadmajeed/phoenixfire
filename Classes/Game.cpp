@@ -23,11 +23,14 @@ bool Game::init()
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
+	bulletList = CCSet::create();
+	bulletList->retain();
+
     // init hero
     pHero = CCSprite::create("hero.png");
 	pHero->setScale(0.13f);
     pHero->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/10 + origin.y));
-    this->addChild(pHero, 0);
+    this->addChild(pHero, 1);
 
 	this->scheduleUpdate();
 	this->setTouchEnabled(true);
@@ -50,14 +53,24 @@ void Game::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 }
 
 float fireEneryBar = 0;
+float interval = 0.6f;
 void Game::update(float delta)
 {
-	if((fireEneryBar += delta) > BULLET_INTERVAL)
+	if((fireEneryBar += delta) > interval)
 	{
 		fireEneryBar = 0;
-		CCSprite *pBullet = CCSprite::create("bullet.png");
-		pBullet->setPosition(pHero->getPosition());
-		this->addChild(pBullet);
+		Bullet *bullet = Bullet::create("bullet.png", pHero->getPosition(), 200);
+		bullet->setScale(0.5f);
+		bulletList->addObject(bullet);
+		this->addChild(bullet, 0);
 	}
-	
+
+	CCSetIterator it = bulletList->begin();
+	Bullet *bullet;
+	while (it!=bulletList->end())
+	{
+		bullet = (Bullet *)(*it);
+		bullet->updateBullet(delta);
+		it++;
+	}
 }

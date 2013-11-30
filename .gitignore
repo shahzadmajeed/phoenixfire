@@ -91,6 +91,7 @@ proj.win32/ipch/
 *.tmp
 *.vspscc
 *.pfx
+*.opensdf
 
 #############
 ## Windows detritus

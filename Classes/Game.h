@@ -7,6 +7,8 @@ class Game : public cocos2d::CCLayerColor
 {
 private:
 	cocos2d::CCSprite *pHero;
+	cocos2d::CCSet *bulletList;
+
 	void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
 	void update(float delta);
 
