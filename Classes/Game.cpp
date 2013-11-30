@@ -70,7 +70,6 @@ void Game::update(float delta)
 	while (it!=bulletsList->end())
 	{
 		bullet = (Bullet *)(*it);
-		//bullet->updateBullet(delta);
 		if(bullet->getPositionY() > visibleSize.height)
 		{
 			bulletsToDelete->addObject(bullet);

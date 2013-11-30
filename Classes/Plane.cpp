@@ -26,10 +26,11 @@ Bullet* Plane::fire(float deltaTime)
 	if((fireEnergyBar += deltaTime) > fireInterval)
 	{
 		initFireEnergyBar();
-		Bullet *bullet = Bullet::create("bullet.png", getPosition(), 200);
+		Bullet *bullet = Bullet::create("bullet.png");
+		bullet->setPosition(ccpAdd(getPosition(), ccp(0, 20)));
 		bullet->setScale(0.5f);
 		// let the bullet fly ~
-		bullet->runAction(CCMoveTo::create(50, ccpAdd(getPosition(), ccp(0, 10000))));
+		bullet->fly();
 		return bullet;
 	}
 	return NULL;

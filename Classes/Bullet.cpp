@@ -2,13 +2,11 @@
 
 USING_NS_CC;
 
-Bullet* Bullet::create(const char *pszFileName,CCPoint position, int speed)
+Bullet* Bullet::create(const char *pszFileName)
 {
 	Bullet *bullet = new Bullet();
 	if (bullet && bullet->initWithFile(pszFileName))
     {
-		bullet->setPosition(position);
-		bullet->setBulletSpeed(speed);
         bullet->autorelease();
 		return bullet;
 	}
@@ -16,12 +14,7 @@ Bullet* Bullet::create(const char *pszFileName,CCPoint position, int speed)
 	return NULL;
 }
 
-void Bullet::updateBullet(float delta)
+void Bullet::fly()
 {
-	setPositionY(getPositionY() + speed * delta);
-}
-
-void Bullet::setBulletSpeed(int speed)
-{
-	this->speed = speed;
+	runAction(CCMoveTo::create(50, ccpAdd(getPosition(), ccp(0, 10000))));
 }

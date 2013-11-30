@@ -11,10 +11,8 @@ private:
 	cocos2d::CCSprite *bulletSprite;
 
 public:
-	static Bullet* create(const char *pszFileName, cocos2d::CCPoint position, int speed);
-	void setBulletPosition(cocos2d::CCPoint position);
-	void setBulletSpeed(int speed);
-	void updateBullet(float delta);
+	static Bullet* create(const char *pszFileName);
+	void fly();
 };
 
 #endif
