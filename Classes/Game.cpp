@@ -20,11 +20,11 @@ bool Game::init()
         return false;
     }
     
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
-	bulletList = CCSet::create();
-	bulletList->retain();
+	bulletsList = CCSet::create();
+	bulletsList->retain();
 
     // init hero
     pHero = CCSprite::create("hero.png");
@@ -61,16 +61,31 @@ void Game::update(float delta)
 		fireEneryBar = 0;
 		Bullet *bullet = Bullet::create("bullet.png", pHero->getPosition(), 200);
 		bullet->setScale(0.5f);
-		bulletList->addObject(bullet);
+		bulletsList->addObject(bullet);
 		this->addChild(bullet, 0);
 	}
 
-	CCSetIterator it = bulletList->begin();
+	CCSetIterator it = bulletsList->begin();
 	Bullet *bullet;
-	while (it!=bulletList->end())
+	CCSet *bulletsToDelete = CCSet::create();
+
+	while (it!=bulletsList->end())
 	{
 		bullet = (Bullet *)(*it);
 		bullet->updateBullet(delta);
+		if(bullet->getPositionY() > visibleSize.height)
+		{
+			bulletsToDelete->addObject(bullet);
+		}
 		it++;
+	}
+
+	it = bulletsToDelete->begin();
+	while(it != bulletsToDelete->end())
+	{
+		bullet = (Bullet *)(*it);
+		bulletsList->removeObject(bullet);
+		bullet->removeFromParent();
+		it++;	
 	}
 }
