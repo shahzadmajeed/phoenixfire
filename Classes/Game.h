@@ -2,11 +2,12 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
+#include "Plane.h"
 
 class Game : public cocos2d::CCLayerColor
 {
 private:
-	cocos2d::CCSprite *pHero;
+	Plane *Hero;
 	cocos2d::CCSet *bulletsList;
 
 	void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);

@@ -11,7 +11,7 @@ Bullet* Bullet::create(const char *pszFileName,CCPoint position, int speed)
 		bullet->setBulletSpeed(speed);
         bullet->autorelease();
 		return bullet;
-    }
+	}
 	CC_SAFE_DELETE(bullet);
 	return NULL;
 }
