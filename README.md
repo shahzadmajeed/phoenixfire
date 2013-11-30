@@ -1,6 +1,6 @@
 phoenixfire
-永恒之火(好吧我必须承认现在的配色完全跟名字不靠边。。。)
 ===========
+永恒之火(好吧我必须承认现在的配色完全跟名字不靠边。。。)
 
 An air battle game for get myself used to cocos2dx.
 一个简单的空战游戏，目的是让自己熟悉cocos2dx。
