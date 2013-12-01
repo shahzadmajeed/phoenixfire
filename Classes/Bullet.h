@@ -5,13 +5,15 @@
 
 class Bullet : public cocos2d::CCSprite
 {
-private:
-	int speed;
-
-	cocos2d::CCSprite *bulletSprite;
-
 public:
-	static Bullet* create(const char *pszFileName);
+	enum BulletType
+	{
+		OurBullet,
+		EnemyBullet
+	};
+
+	CREATE_FUNC(Bullet);
+	static Bullet* createWithTexture(cocos2d::CCTexture2D *pTexture);
 	void fly();
 };
 

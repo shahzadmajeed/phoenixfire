@@ -2,19 +2,19 @@
 
 USING_NS_CC;
 
-Bullet* Bullet::create(const char *pszFileName)
+Bullet* Bullet::createWithTexture(CCTexture2D *pTexture)
 {
-	Bullet *bullet = new Bullet();
-	if (bullet && bullet->initWithFile(pszFileName))
+    Bullet *pobSprite = new Bullet();
+    if (pobSprite && pobSprite->initWithTexture(pTexture))
     {
-        bullet->autorelease();
-		return bullet;
-	}
-	CC_SAFE_DELETE(bullet);
-	return NULL;
+        pobSprite->autorelease();
+        return pobSprite;
+    }
+    CC_SAFE_DELETE(pobSprite);
+    return NULL;
 }
 
 void Bullet::fly()
 {
-	runAction(CCMoveTo::create(50, ccpAdd(getPosition(), ccp(0, 10000))));
+	runAction(CCMoveTo::create(40, ccpAdd(getPosition(), ccp(0, 10000))));
 }

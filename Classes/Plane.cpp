@@ -21,19 +21,13 @@ void Plane::moveTo(CCPoint destination)
 	runAction(CCEaseIn::create(CCMoveTo::create(0.5f, destination), 0.19f));
 }
 
-Bullet* Plane::fire(float deltaTime)
+void Plane::fire(float deltaTime)
 {
 	if((fireEnergyBar += deltaTime) > fireInterval)
 	{
 		initFireEnergyBar();
-		Bullet *bullet = Bullet::create("bullet.png");
-		bullet->setPosition(ccpAdd(getPosition(), ccp(0, 20)));
-		bullet->setScale(0.5f);
-		// let the bullet fly ~
-		bullet->fly();
-		return bullet;
+		BulletLayer::sharedBulletLayer->addBullet(Bullet::OurBullet, ccpAdd(getPosition(), ccp(0, 20)));
 	}
-	return NULL;
 }
 
 void Plane::setFireInterval(float fireInterval)
