@@ -4,6 +4,18 @@ USING_NS_CC;
 
 BulletLayer *BulletLayer::sharedBulletLayer = NULL;
 
+BulletLayer::BulletLayer()
+{
+	bullets = CCArray::create();
+	bullets->retain();
+}
+
+BulletLayer::~BulletLayer()
+{
+	bullets->release();
+	bullets = NULL;
+}
+
 BulletLayer* BulletLayer::create()
 {
 	BulletLayer *bulletLayer = new BulletLayer();
@@ -23,20 +35,39 @@ bool BulletLayer::init()
 
 	bulletBatchNode = CCSpriteBatchNode::create("bullet.png");
 	this->addChild(bulletBatchNode);
+	this->scheduleUpdate();
 
 	return true;
 }
 
-void BulletLayer::addBullet(Bullet::BulletType type, CCPoint position)
+void BulletLayer::update(float delta)
 {
-	switch (type)
+	CCArray *allBullets = this->getChildren();
+	CCArray *bulletsToDelete = CCArray::create();
+	CCObject *obj = NULL;
+	float visibleHeight = CCDirector::sharedDirector()->getVisibleSize().height;
+
+	CCARRAY_FOREACH(allBullets, obj)
 	{
-	case Bullet::BulletType::OurBullet:
-		Bullet *bullet = Bullet::createWithTexture(bulletBatchNode->getTexture());
-		bullet->setScale(0.3f);
-		bullet->setPosition(position);
-		bullet->fly();
-		this->addChild(bullet);
-		break;
+		Bullet *bullet = (Bullet *)obj;
+		if(bullet->getPosition().y > visibleHeight)
+		{
+			bulletsToDelete->addObject(bullet);
+		}
 	}
+
+	CCARRAY_FOREACH(bulletsToDelete, obj)
+	{
+		removeChild((CCNode*)obj);
+	}
+}
+
+void BulletLayer::addBullet(CCPoint position)
+{
+	Bullet *bullet = Bullet::createWithTexture(bulletBatchNode->getTexture());
+	bullet->setScale(0.3f);
+	bullet->setPosition(position);
+	bullet->fly();
+
+	addChild(bullet);
 }

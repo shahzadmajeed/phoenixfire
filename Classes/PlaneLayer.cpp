@@ -8,6 +8,7 @@ bool PlaneLayer::init()
 {
 	if (!CCLayer::init()) return false;
 
+	// Init hero
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
@@ -24,6 +25,7 @@ bool PlaneLayer::init()
 
 void PlaneLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
+	// Move hero
 	CCTouch *pTouch = (CCTouch *)pTouches->anyObject();
 	CCPoint currentPoint = pTouch->getLocationInView();
 	currentPoint = CCDirector::sharedDirector()->convertToGL(currentPoint);

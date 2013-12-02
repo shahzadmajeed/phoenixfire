@@ -26,7 +26,7 @@ void Plane::fire(float deltaTime)
 	if((fireEnergyBar += deltaTime) > fireInterval)
 	{
 		initFireEnergyBar();
-		BulletLayer::sharedBulletLayer->addBullet(Bullet::OurBullet, ccpAdd(getPosition(), ccp(0, 20)));
+		BulletLayer::sharedBulletLayer->addBullet(ccpAdd(getPosition(), ccp(0, 20)));
 	}
 }
 

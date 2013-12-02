@@ -19,6 +19,10 @@ bool GameScene::init()
 	if(!gameLayer) return false;
 	this->addChild(gameLayer);
 
+	enemyLayer = EnemyLayer::create();
+	if(!enemyLayer) return false;
+	this->addChild(enemyLayer);
+
 	planeLayer = PlaneLayer::create();
 	if(!planeLayer) return false;
 	this->addChild(planeLayer);

@@ -8,11 +8,15 @@ class BulletLayer : public cocos2d::CCLayer
 {
 private:
 	cocos2d::CCSpriteBatchNode *bulletBatchNode;
+	cocos2d::CCArray *bullets;
 
 public:
+	BulletLayer();
+	~BulletLayer();
 	static BulletLayer* create();
 	virtual bool init();
-	void addBullet(Bullet::BulletType type, cocos2d::CCPoint position);
+	void update(float delta);
+	void addBullet(cocos2d::CCPoint position);
 
 	static BulletLayer *sharedBulletLayer;
 };
