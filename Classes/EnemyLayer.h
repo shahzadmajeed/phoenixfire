@@ -2,6 +2,7 @@
 #define _ENEMYLAYER_H_
 
 #include "cocos2d.h"
+#include "Enemy.h"
 
 class EnemyLayer : public cocos2d::CCLayer
 {
@@ -11,6 +12,7 @@ public:
 	void update(float delta);
 
 	void addEnemy(float delta);
+	void removeEnemies(cocos2d::CCArray *enemiesToDelete);
 };
 
 #endif

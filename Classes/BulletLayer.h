@@ -17,6 +17,8 @@ public:
 	virtual bool init();
 	void update(float delta);
 	void addBullet(cocos2d::CCPoint position);
+	cocos2d::CCArray* getAllBullets();
+	void removeBullets(cocos2d::CCArray *bulletsToDelete);
 
 	static BulletLayer *sharedBulletLayer;
 };

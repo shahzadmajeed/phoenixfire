@@ -1,15 +1,6 @@
 #include "GameScene.h"
 
-GameScene::GameScene()
-{
-	gameLayer = NULL;
-
-}
-
-GameScene::~GameScene()
-{
-
-}
+USING_NS_CC;
 
 bool GameScene::init()
 {
@@ -29,7 +20,39 @@ bool GameScene::init()
 
 	bulletLayer = BulletLayer::create();
 	if(!bulletLayer) return false;
-	this->addChild(bulletLayer);	
+	this->addChild(bulletLayer);
+
+	this->scheduleUpdate();
 
 	return true;
+}
+
+void GameScene::update(float delta)
+{
+	// check Collosion
+	CCArray *enemiesToDelete = CCArray::create();
+	CCArray *bulletsToDelete = CCArray::create();
+
+	CCArray *allEnemies = this->enemyLayer->getChildren();
+	CCArray *allBullets = this->bulletLayer->getAllBullets();
+
+	CCObject *enemyObj = NULL;
+	CCObject *bulletObj = NULL;
+
+	CCARRAY_FOREACH(allEnemies, enemyObj)
+	{
+		Enemy *enemy = (Enemy *)enemyObj;
+		CCARRAY_FOREACH(allBullets, bulletObj)
+		{
+			Bullet *bullet = (Bullet *)bulletObj;
+			if(enemy->boundingBox().intersectsRect(bullet->boundingBox()))
+			{
+				enemiesToDelete->addObject(enemyObj);
+				bulletsToDelete->addObject(bulletObj);
+			}
+		}
+	}
+
+	bulletLayer->removeBullets(bulletsToDelete);
+	enemyLayer->removeEnemies(enemiesToDelete);
 }

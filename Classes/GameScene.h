@@ -6,14 +6,14 @@
 #include "PlaneLayer.h"
 #include "BulletLayer.h"
 #include "EnemyLayer.h"
+#include "Enemy.h"
 
 class GameScene : public cocos2d::CCScene
 {
 public:
-	GameScene();
-	~GameScene();
 	CREATE_FUNC(GameScene);
 	virtual bool init();
+	void update(float delta);
 	
 	GameLayer* gameLayer;
 	EnemyLayer* enemyLayer;

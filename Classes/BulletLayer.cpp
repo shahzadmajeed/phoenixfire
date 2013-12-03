@@ -42,7 +42,7 @@ bool BulletLayer::init()
 
 void BulletLayer::update(float delta)
 {
-	CCArray *allBullets = this->getChildren();
+	CCArray *allBullets = bulletBatchNode->getChildren();
 	CCArray *bulletsToDelete = CCArray::create();
 	CCObject *obj = NULL;
 	float visibleHeight = CCDirector::sharedDirector()->getVisibleSize().height;
@@ -56,10 +56,7 @@ void BulletLayer::update(float delta)
 		}
 	}
 
-	CCARRAY_FOREACH(bulletsToDelete, obj)
-	{
-		removeChild((CCNode*)obj);
-	}
+	this->removeBullets(bulletsToDelete);
 }
 
 void BulletLayer::addBullet(CCPoint position)
@@ -69,5 +66,19 @@ void BulletLayer::addBullet(CCPoint position)
 	bullet->setPosition(position);
 	bullet->fly();
 
-	addChild(bullet);
+	bulletBatchNode->addChild(bullet);
+}
+
+CCArray* BulletLayer::getAllBullets()
+{
+	return bulletBatchNode->getChildren();
+}
+
+void BulletLayer::removeBullets(CCArray *bulletsToDelete)
+{
+	CCObject *obj = NULL;
+	CCARRAY_FOREACH(bulletsToDelete, obj)
+	{
+		bulletBatchNode->removeChild((CCNode*)obj, true);
+	}
 }

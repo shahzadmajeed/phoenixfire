@@ -14,13 +14,10 @@ bool EnemyLayer::init()
 
 void EnemyLayer::addEnemy(float delta)
 {
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-
-	CCSprite *enemy = CCSprite::create("hero.png");
+	Enemy *enemy = Enemy::create("hero.png");
 	enemy->setScaleX(0.13f);
 	enemy->setScaleY(-0.13f);
-	enemy->setPosition(ccp(rand()%(int)visibleSize.width, (int)visibleSize.height-20));
-	enemy->runAction(CCMoveTo::create(4, ccp(enemy->getPositionX(), -20)));
+	enemy->move();
 	this->addChild(enemy);
 }
 
@@ -32,7 +29,7 @@ void EnemyLayer::update(float delta)
 
 	CCARRAY_FOREACH(allEnemies, obj)
 	{
-		CCSprite *enemy = (CCSprite *)obj;
+		Enemy *enemy = (Enemy *)obj;
 		if(enemy->getPosition().y < -10)
 		{
 			EnemiesToDelete->addObject(enemy);
@@ -40,6 +37,15 @@ void EnemyLayer::update(float delta)
 	}
 
 	CCARRAY_FOREACH(EnemiesToDelete, obj)
+	{
+		removeChild((CCNode*)obj);
+	}
+}
+
+void EnemyLayer::removeEnemies(CCArray *enemiesToDelete)
+{
+	CCObject *obj = NULL;
+	CCARRAY_FOREACH(enemiesToDelete, obj)
 	{
 		removeChild((CCNode*)obj);
 	}
