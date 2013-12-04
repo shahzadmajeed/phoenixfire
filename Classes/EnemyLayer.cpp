@@ -6,39 +6,29 @@ bool EnemyLayer::init()
 {
 	if(!CCLayer::init()) return false;
 
-	schedule(schedule_selector(EnemyLayer::addEnemy), 1);
+	addEnemy();
 	scheduleUpdate();
 
 	return true;
 }
 
-void EnemyLayer::addEnemy(float delta)
+void EnemyLayer::addEnemy()
 {
-	Enemy *enemy = Enemy::create("hero.png");
-	enemy->setScaleX(0.13f);
-	enemy->setScaleY(-0.13f);
+	Enemy *enemy = Enemy::create("enemy.png");
+	enemy->setLife(2000);
+	enemy->setScale(0.7f);
 	enemy->move();
-	this->addChild(enemy);
+	this->addChild(enemy,0,0);
 }
 
 void EnemyLayer::update(float delta)
 {
-	CCArray *allEnemies = this->getChildren();
-	CCArray *EnemiesToDelete = CCArray::create();
-	CCObject *obj = NULL;
+	Enemy *enemy = (Enemy *)getChildByTag(0);
 
-	CCARRAY_FOREACH(allEnemies, obj)
+	if(enemy->getLife() <= 0)
 	{
-		Enemy *enemy = (Enemy *)obj;
-		if(enemy->getPosition().y < -10)
-		{
-			EnemiesToDelete->addObject(enemy);
-		}
-	}
-
-	CCARRAY_FOREACH(EnemiesToDelete, obj)
-	{
-		removeChild((CCNode*)obj);
+		removeChild((CCNode*)enemy);
+		addEnemy();
 	}
 }
 

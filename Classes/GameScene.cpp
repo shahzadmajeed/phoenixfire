@@ -29,30 +29,23 @@ bool GameScene::init()
 
 void GameScene::update(float delta)
 {
-	// check Collosion
-	CCArray *enemiesToDelete = CCArray::create();
 	CCArray *bulletsToDelete = CCArray::create();
 
-	CCArray *allEnemies = this->enemyLayer->getChildren();
+	Enemy *enemy = (Enemy *)this->enemyLayer->getChildByTag(0);
 	CCArray *allBullets = this->bulletLayer->getAllBullets();
 
-	CCObject *enemyObj = NULL;
 	CCObject *bulletObj = NULL;
 
-	CCARRAY_FOREACH(allEnemies, enemyObj)
+	CCARRAY_FOREACH(allBullets, bulletObj)
 	{
-		Enemy *enemy = (Enemy *)enemyObj;
-		CCARRAY_FOREACH(allBullets, bulletObj)
+		Bullet *bullet = (Bullet *)bulletObj;
+		if(enemy->boundingBox().intersectsRect(bullet->boundingBox()))
 		{
-			Bullet *bullet = (Bullet *)bulletObj;
-			if(enemy->boundingBox().intersectsRect(bullet->boundingBox()))
-			{
-				enemiesToDelete->addObject(enemyObj);
-				bulletsToDelete->addObject(bulletObj);
-			}
+			enemy->hitedByBullet(bullet);
+			CCLOG("enemy life: %f", enemy->getLife());
+			bulletsToDelete->addObject(bullet);
 		}
 	}
 
 	bulletLayer->removeBullets(bulletsToDelete);
-	enemyLayer->removeEnemies(enemiesToDelete);
 }

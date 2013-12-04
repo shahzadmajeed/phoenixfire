@@ -5,16 +5,16 @@
 
 class Bullet : public cocos2d::CCSprite
 {
+private:
+	float damage;
 public:
-	enum BulletType
-	{
-		OurBullet,
-		EnemyBullet
-	};
-
 	CREATE_FUNC(Bullet);
 	static Bullet* createWithTexture(cocos2d::CCTexture2D *pTexture);
 	void fly();
+	void setDamage(float damage);
+	float getDamage();
+
+
 };
 
 #endif

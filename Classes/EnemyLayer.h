@@ -11,7 +11,7 @@ public:
 	virtual bool init();
 	void update(float delta);
 
-	void addEnemy(float delta);
+	void addEnemy();
 	void removeEnemies(cocos2d::CCArray *enemiesToDelete);
 };
 

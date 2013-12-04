@@ -1,6 +1,8 @@
 #ifndef  _APP_DELEGATE_H_
 #define  _APP_DELEGATE_H_
 
+#define COCOS2D_DEBUG 1
+
 #include "cocos2d.h" 
 
 /**
