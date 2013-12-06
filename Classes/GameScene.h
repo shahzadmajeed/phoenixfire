@@ -4,8 +4,9 @@
 #include "cocos2d.h"
 #include "GameLayer.h"
 #include "PlaneLayer.h"
-#include "BulletLayer.h"
+#include "HeroBulletLayer.h"
 #include "EnemyLayer.h"
+#include "EnemyBulletLayer.h"
 #include "Enemy.h"
 
 class GameScene : public cocos2d::CCScene
@@ -17,8 +18,9 @@ public:
 	
 	GameLayer* gameLayer;
 	EnemyLayer* enemyLayer;
+	EnemyBulletLayer* enemyBulletLayer;
 	PlaneLayer* planeLayer;
-	BulletLayer* bulletLayer;
+	HeroBulletLayer* heroBulletLayer;
 };
 
 #endif

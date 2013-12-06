@@ -2,25 +2,13 @@
 #define _BULLETLAYER_H_
 
 #include "cocos2d.h"
-#include "Bullet.h"
 
-class BulletLayer : public cocos2d::CCLayer
+class BulletLayer
 {
-private:
-	cocos2d::CCSpriteBatchNode *bulletBatchNode;
-	cocos2d::CCArray *bullets;
-
 public:
-	BulletLayer();
-	~BulletLayer();
-	static BulletLayer* create();
-	virtual bool init();
-	void update(float delta);
 	void addBullet(cocos2d::CCPoint position);
 	cocos2d::CCArray* getAllBullets();
 	void removeBullets(cocos2d::CCArray *bulletsToDelete);
-
-	static BulletLayer *sharedBulletLayer;
 };
 
 #endif

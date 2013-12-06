@@ -1,27 +1,25 @@
-#include "BulletLayer.h"
+#include "EnemyBulletLayer.h"
 
 USING_NS_CC;
 
-BulletLayer *BulletLayer::sharedBulletLayer = NULL;
-
-BulletLayer::BulletLayer()
+EnemyBulletLayer::EnemyBulletLayer()
 {
 	bullets = CCArray::create();
 	bullets->retain();
 }
 
-BulletLayer::~BulletLayer()
+EnemyBulletLayer::~EnemyBulletLayer()
 {
+	bulletBatchNode->release();
 	bullets->release();
 	bullets = NULL;
 }
 
-BulletLayer* BulletLayer::create()
+EnemyBulletLayer* EnemyBulletLayer::create()
 {
-	BulletLayer *bulletLayer = new BulletLayer();
+	EnemyBulletLayer *bulletLayer = new EnemyBulletLayer();
 	if(bulletLayer && bulletLayer->init())
 	{
-		BulletLayer::sharedBulletLayer = bulletLayer;
 		bulletLayer->autorelease();
 		return bulletLayer;
 	}
@@ -29,18 +27,19 @@ BulletLayer* BulletLayer::create()
 	return NULL;
 }
 
-bool BulletLayer::init()
+bool EnemyBulletLayer::init()
 {
 	if(!CCLayer::init()) return false;
 
 	bulletBatchNode = CCSpriteBatchNode::create("bullet.png");
+	bulletBatchNode->retain();
 	this->addChild(bulletBatchNode);
 	this->scheduleUpdate();
 
 	return true;
 }
 
-void BulletLayer::update(float delta)
+void EnemyBulletLayer::update(float delta)
 {
 	CCArray *allBullets = bulletBatchNode->getChildren();
 	CCArray *bulletsToDelete = CCArray::create();
@@ -50,7 +49,7 @@ void BulletLayer::update(float delta)
 	CCARRAY_FOREACH(allBullets, obj)
 	{
 		Bullet *bullet = (Bullet *)obj;
-		if(bullet->getPosition().y > visibleHeight)
+		if(bullet->getPosition().y < 0)
 		{
 			bulletsToDelete->addObject(bullet);
 		}
@@ -59,22 +58,22 @@ void BulletLayer::update(float delta)
 	this->removeBullets(bulletsToDelete);
 }
 
-void BulletLayer::addBullet(CCPoint position)
+void EnemyBulletLayer::addBullet(CCPoint position)
 {
 	Bullet *bullet = Bullet::createWithTexture(bulletBatchNode->getTexture());
 	bullet->setScale(0.3f);
 	bullet->setPosition(position);
-	bullet->fly();
+	bullet->fly(-0.5f * PI);
 
 	bulletBatchNode->addChild(bullet);
 }
 
-CCArray* BulletLayer::getAllBullets()
+CCArray* EnemyBulletLayer::getAllBullets()
 {
 	return bulletBatchNode->getChildren();
 }
 
-void BulletLayer::removeBullets(CCArray *bulletsToDelete)
+void EnemyBulletLayer::removeBullets(CCArray *bulletsToDelete)
 {
 	CCObject *obj = NULL;
 	CCARRAY_FOREACH(bulletsToDelete, obj)

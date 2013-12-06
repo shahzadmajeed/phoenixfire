@@ -42,3 +42,8 @@ void PlaneLayer::update(float delta)
 {
 	Hero->fire(delta);
 }
+
+void PlaneLayer::setBulletLayer(HeroBulletLayer *layer)
+{
+	Hero->setBulletLayer(layer);
+}

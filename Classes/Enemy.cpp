@@ -7,6 +7,7 @@ Enemy* Enemy::create(const char *pszFileName)
 	Enemy *enemy = new Enemy();
 	if(enemy && enemy->initWithFile(pszFileName))
 	{
+		enemy->addCannons();
 		enemy->autorelease();
 		return enemy;
 	}
@@ -44,10 +45,22 @@ void Enemy::foreverMove()
 	runAction(CCRepeatForever::create(CCSequence::create(foreverMove)));
 }
 
-float Enemy::hitedByBullet(Bullet *bullet)
+// return if hit
+boolean Enemy::detectCollusion(Bullet *bullet)
 {
-	this->life -= bullet->getDamage();
-	return life;
+	// I use a circle represent the enemy.
+	CCRect area = boundingBox();
+	// center point of the circle.
+	CCPoint center = ccp(
+		area.getMidX(),
+		area.getMinY() + area.size.width / 2 + 13);
+	float radius = area.size.width / 2 + 12;
+	if(bullet->getPosition().getDistance(center) < radius)
+	{
+		this->life -= bullet->getDamage();
+		return true;
+	}
+	return false;
 }
 
 void Enemy::setLife(float life)
@@ -58,4 +71,34 @@ void Enemy::setLife(float life)
 float Enemy::getLife()
 {
 	return this->life;
+}
+
+void Enemy::addCannons()
+{
+	CCSize enemySize = boundingBox().size;
+
+	Cannon *cannon = Cannon::create("cannon.png", 0.13f);
+	cannon->setScale(0.5f);
+	cannon->setPosition(ccp(enemySize.width / 2,30));
+	addChild(cannon);
+}
+
+void Enemy::setBulletLayer(EnemyBulletLayer *layer)
+{
+	CCObject *obj = NULL;
+	CCARRAY_FOREACH(this->getChildren(), obj)
+	{
+		Cannon *cannon = (Cannon *)obj;
+		cannon->setBulletLayer(layer);
+	}
+}
+
+void Enemy::fire(float deltaTime)
+{
+	CCObject *obj = NULL;
+	CCARRAY_FOREACH(this->getChildren(), obj)
+	{
+		Cannon *cannon = (Cannon *)obj;
+		cannon->fire(deltaTime);
+	}
 }

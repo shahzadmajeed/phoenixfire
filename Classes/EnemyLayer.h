@@ -3,16 +3,21 @@
 
 #include "cocos2d.h"
 #include "Enemy.h"
+#include "EnemyBulletLayer.h"
 
 class EnemyLayer : public cocos2d::CCLayer
 {
+private:
+	EnemyBulletLayer *bulletLayer;
+
 public:
-	CREATE_FUNC(EnemyLayer);
+	static EnemyLayer* create(EnemyBulletLayer *layer);
 	virtual bool init();
 	void update(float delta);
 
 	void addEnemy();
 	void removeEnemies(cocos2d::CCArray *enemiesToDelete);
+	void setBulletLayer(EnemyBulletLayer *layer);
 };
 
 #endif

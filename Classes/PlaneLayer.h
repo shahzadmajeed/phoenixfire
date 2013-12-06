@@ -3,12 +3,14 @@
 
 #include "cocos2d.h"
 #include "Plane.h"
+#include "HeroBulletLayer.h"
 
 class PlaneLayer : public cocos2d::CCLayer
 {
 public:
 	CREATE_FUNC(PlaneLayer);
 	virtual bool init();
+	void setBulletLayer(HeroBulletLayer *layer);
 	void ccTouchesMoved(cocos2d::CCSet *pTouches, cocos2d::CCEvent *pEvent);
 	void update(float delta);
 

@@ -2,11 +2,23 @@
 
 USING_NS_CC;
 
+EnemyLayer* EnemyLayer::create(EnemyBulletLayer *layer)
+{
+	EnemyLayer *enemyLayer = new EnemyLayer();
+	if(enemyLayer && enemyLayer->init())
+	{
+		enemyLayer->setBulletLayer(layer);
+		enemyLayer->addEnemy();
+		enemyLayer->autorelease();
+		return enemyLayer;
+	}
+	CC_SAFE_DELETE(enemyLayer);
+	return NULL;
+}
+
 bool EnemyLayer::init()
 {
 	if(!CCLayer::init()) return false;
-
-	addEnemy();
 	scheduleUpdate();
 
 	return true;
@@ -15,8 +27,9 @@ bool EnemyLayer::init()
 void EnemyLayer::addEnemy()
 {
 	Enemy *enemy = Enemy::create("enemy.png");
-	enemy->setLife(2000);
+	enemy->setLife(700);
 	enemy->setScale(0.7f);
+	enemy->setBulletLayer(bulletLayer);
 	enemy->move();
 	this->addChild(enemy,0,0);
 }
@@ -24,6 +37,7 @@ void EnemyLayer::addEnemy()
 void EnemyLayer::update(float delta)
 {
 	Enemy *enemy = (Enemy *)getChildByTag(0);
+	enemy->fire(delta);
 
 	if(enemy->getLife() <= 0)
 	{
@@ -39,4 +53,9 @@ void EnemyLayer::removeEnemies(CCArray *enemiesToDelete)
 	{
 		removeChild((CCNode*)obj);
 	}
+}
+
+void EnemyLayer::setBulletLayer(EnemyBulletLayer *layer)
+{
+	this->bulletLayer = layer;
 }
