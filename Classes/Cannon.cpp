@@ -21,8 +21,7 @@ void Cannon::fire(float deltaTime)
 	if((fireEnergyBar += deltaTime) > fireInterval)
 	{
 		initFireEnergyBar();
-		CCPoint p = getPosition();
-		bulletLayer->addBullet(ccpAdd(getParent()->convertToWorldSpace(p), ccp(0, -10)));
+		bulletLayer->addBullet(ccpAdd(getParent()->convertToWorldSpace(getPosition()), ccp(0, -10)));
 	}
 }
 
