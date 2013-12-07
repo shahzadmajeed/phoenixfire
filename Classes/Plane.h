@@ -8,6 +8,7 @@
 class Plane : public cocos2d::CCSprite
 {
 private:
+	float life;
 	HeroBulletLayer *bulletLayer;
 	float fireEnergyBar;
 	float fireInterval;
@@ -20,6 +21,9 @@ public:
 	void setBulletLayer(HeroBulletLayer *layer);
 	void setFireInterval(float fireInterval);
 	void initFireEnergyBar();
+	boolean detectCollusion(Bullet *bullet);
+	void setLife(float life);
+	float getLife();
 };
 
 #endif

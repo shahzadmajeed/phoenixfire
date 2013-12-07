@@ -14,6 +14,7 @@ bool PlaneLayer::init()
 
 	PlaneLayer::Hero = Plane::create("hero.png", 0.13f);
 	PlaneLayer::Hero->setScale(0.13f);
+	PlaneLayer::Hero->setLife(1000);
     PlaneLayer::Hero->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/10 + origin.y));
     this->addChild(Hero, 1, 0);
 
@@ -41,6 +42,16 @@ void PlaneLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 void PlaneLayer::update(float delta)
 {
 	Hero->fire(delta);
+
+	if(Hero->getLife() < 0)
+	{
+		CCLabelTTF *label = CCLabelTTF::create("You lose!", "Arial", 24);
+		label->setColor(ccc3(0,0,0));
+		label->setPosition(ccp(CCDirector::sharedDirector()->getVisibleSize().width / 2,
+			CCDirector::sharedDirector()->getVisibleSize().height / 2));
+		addChild(label);
+		CCDirector::sharedDirector()->pause();
+	}
 }
 
 void PlaneLayer::setBulletLayer(HeroBulletLayer *layer)

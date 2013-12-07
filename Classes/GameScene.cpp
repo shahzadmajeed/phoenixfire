@@ -55,4 +55,23 @@ void GameScene::update(float delta)
 	}
 
 	heroBulletLayer->removeBullets(bulletsToDelete);
+	bulletsToDelete->removeAllObjects();
+
+	Plane *hero = (Plane *)this->planeLayer->Hero;
+	allBullets = this->enemyBulletLayer->getAllBullets();
+
+	CCARRAY_FOREACH(allBullets, bulletObj)
+	{
+		Bullet *bullet = (Bullet *)bulletObj;
+		if(hero->boundingBox().intersectsRect(bullet->boundingBox()))
+		{
+			if(hero->detectCollusion(bullet))
+			{
+				CCLOG("our life: %f", hero->getLife());
+				bulletsToDelete->addObject(bullet);
+			}
+		}
+	}
+
+	enemyBulletLayer->removeBullets(bulletsToDelete);
 }

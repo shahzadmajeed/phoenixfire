@@ -77,17 +77,17 @@ void Enemy::addCannons()
 {
 	CCSize enemySize = boundingBox().size;
 
-	Cannon *cannon = Cannon::create("cannon.png", 0.4f);
+	Cannon *cannon = Cannon::create("cannon.png", 0.2f);
 	cannon->setScale(0.5f);
 	cannon->setPosition(ccp(enemySize.width / 2,30));
 	addChild(cannon);
 
-	Cannon *cannonL = Cannon::create("cannon.png", 0.7f);
+	Cannon *cannonL = Cannon::create("cannon.png", 0.13f);
 	cannonL->setScale(0.3f);
 	cannonL->setPosition(ccp(enemySize.width / (10/2.0f),45));
 	addChild(cannonL);
 
-	Cannon *cannonR = Cannon::create("cannon.png", 0.7f);
+	Cannon *cannonR = Cannon::create("cannon.png", 0.2f);
 	cannonR->setScale(0.3f);
 	cannonR->setPosition(ccp(enemySize.width / (10/8.0f),45));
 	addChild(cannonR);

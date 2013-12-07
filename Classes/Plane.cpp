@@ -44,3 +44,28 @@ void Plane::initFireEnergyBar()
 {
 	fireEnergyBar = 0;
 }
+
+boolean Plane::detectCollusion(Bullet *bullet)
+{
+	CCRect area = boundingBox();
+	CCPoint center = ccp(
+		area.getMidX(),
+		area.getMinY() + area.size.width / 2 + 20);
+	float radius = area.size.width / 6;
+	if(bullet->getPosition().getDistance(center) < radius)
+	{
+		this->life -= bullet->getDamage();
+		return true;
+	}
+	return false;
+}
+
+void Plane::setLife(float life)
+{
+	this->life = life;
+}
+
+float Plane::getLife()
+{
+	return this->life;
+}
