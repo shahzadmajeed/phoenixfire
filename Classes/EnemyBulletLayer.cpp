@@ -31,7 +31,7 @@ bool EnemyBulletLayer::init()
 {
 	if(!CCLayer::init()) return false;
 
-	bulletBatchNode = CCSpriteBatchNode::create("bullet.png");
+	bulletBatchNode = CCSpriteBatchNode::create("enemy_bullet.png");
 	bulletBatchNode->retain();
 	this->addChild(bulletBatchNode);
 	this->scheduleUpdate();

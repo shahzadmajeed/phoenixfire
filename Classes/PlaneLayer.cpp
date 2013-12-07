@@ -15,7 +15,7 @@ bool PlaneLayer::init()
 	PlaneLayer::Hero = Plane::create("hero.png", 0.13f);
 	PlaneLayer::Hero->setScale(0.13f);
     PlaneLayer::Hero->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/10 + origin.y));
-    this->addChild(Hero, 1);
+    this->addChild(Hero, 1, 0);
 
 	this->scheduleUpdate();
 	this->setTouchEnabled(true);
