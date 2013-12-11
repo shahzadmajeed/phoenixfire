@@ -135,10 +135,11 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\Enemy.cpp" />
     <ClCompile Include="..\Classes\EnemyBulletLayer.cpp" />
     <ClCompile Include="..\Classes\EnemyLayer.cpp" />
-    <ClCompile Include="..\Classes\GameLayer.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
-    <ClCompile Include="..\Classes\Plane.cpp" />
-    <ClCompile Include="..\Classes\PlaneLayer.cpp" />
+    <ClCompile Include="..\Classes\Layers\BackgroundLayer.cpp" />
+    <ClCompile Include="..\Classes\Layers\HeroLayer.cpp" />
+    <ClCompile Include="..\Classes\Units\Plane.cpp" />
+    <ClCompile Include="..\Classes\Units\TestHero1.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,10 +152,11 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\Enemy.h" />
     <ClInclude Include="..\Classes\EnemyBulletLayer.h" />
     <ClInclude Include="..\Classes\EnemyLayer.h" />
-    <ClInclude Include="..\Classes\GameLayer.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
-    <ClInclude Include="..\Classes\Plane.h" />
-    <ClInclude Include="..\Classes\PlaneLayer.h" />
+    <ClInclude Include="..\Classes\Layers\BackgroundLayer.h" />
+    <ClInclude Include="..\Classes\Layers\HeroLayer.h" />
+    <ClInclude Include="..\Classes\Units\Plane.h" />
+    <ClInclude Include="..\Classes\Units\TestHero1.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
