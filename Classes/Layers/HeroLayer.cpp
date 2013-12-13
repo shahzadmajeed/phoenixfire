@@ -20,8 +20,7 @@ bool HeroLayer::init(Plane *hero)
 
 	// init Hero
 	this->hero = hero;
-	this->hero->setPosition(ccp(380,100));
-	addChild(this->hero);
+	addChild(this->hero, 0, Tags::HERO);
 
 	setTouchEnabled(true);
     

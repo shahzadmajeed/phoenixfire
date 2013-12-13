@@ -17,6 +17,11 @@ private:
 	virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 
 public:
+	static enum Tags
+	{
+		HERO = 0,
+	};
+
 	static HeroLayer* create(Plane *hero);
 };
 
