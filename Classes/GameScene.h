@@ -1,26 +1,20 @@
-#ifndef _GAMESCENE_H_
-#define _GAMESCENE_H_
+#ifndef GAMESCENE_H
+#define GAMESCENE_H
 
 #include "cocos2d.h"
-#include "GameLayer.h"
-#include "PlaneLayer.h"
-#include "HeroBulletLayer.h"
-#include "EnemyLayer.h"
-#include "EnemyBulletLayer.h"
-#include "Enemy.h"
+#include "Layers\BackgroundLayer.h"
+#include "Layers\HeroLayer.h"
+#include "Units\TestHero1.h"
+#include "Weapons\testWeapon.h"
+#include "Game.h"
 
 class GameScene : public cocos2d::CCScene
 {
+private:
+	virtual bool init();
+
 public:
 	CREATE_FUNC(GameScene);
-	virtual bool init();
-	void update(float delta);
-	
-	GameLayer* gameLayer;
-	EnemyLayer* enemyLayer;
-	EnemyBulletLayer* enemyBulletLayer;
-	PlaneLayer* planeLayer;
-	HeroBulletLayer* heroBulletLayer;
 };
 
 #endif

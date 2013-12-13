@@ -16,6 +16,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
     eglView->setViewName("phoenixfire");
-    eglView->setFrameSize(480, 320);
+    eglView->setFrameSize(380, 640);
     return CCApplication::sharedApplication()->run();
 }
