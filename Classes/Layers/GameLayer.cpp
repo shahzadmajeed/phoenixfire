@@ -43,5 +43,11 @@ void GameLayer::moveHero(CCTouch *pTouch)
 	CCPoint distance = ccpSub(currentPoint, previousPoint);
 	CCPoint destination = ccpAdd(hero->getPosition(), distance);
 
+	if(destination.x < 0) destination.x = 0;
+	else if(destination.x > 760) destination.x = 760;
+
+	if(destination.y < 0) destination.y = 0;
+	else if(destination.y > 1280) destination.y = 1280;
+
 	hero->setPosition(destination);
 }

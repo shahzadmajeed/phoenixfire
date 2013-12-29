@@ -19,7 +19,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pDirector->setOpenGLView(pEGLView);
 	
 	// set display detail
-	pEGLView->setDesignResolutionSize(760.0f, 1280.0f, kResolutionExactFit);
+	pEGLView->setDesignResolutionSize(760, 1280, kResolutionExactFit);
 	
     // turn on display FPS
     pDirector->setDisplayStats(true);
