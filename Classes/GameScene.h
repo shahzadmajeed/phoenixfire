@@ -2,10 +2,8 @@
 #define GAMESCENE_H
 
 #include "cocos2d.h"
-#include "Layers\BackgroundLayer.h"
-#include "Layers\HeroLayer.h"
-#include "Units\TestHero1.h"
-#include "Weapons\testWeapon.h"
+#include "Layers/BackgroundLayer.h"
+#include "Layers/GameLayer.h"
 #include "Game.h"
 
 class GameScene : public cocos2d::CCScene

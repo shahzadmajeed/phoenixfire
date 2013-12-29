@@ -3,17 +3,18 @@
 
 #include "cocos2d.h"
 
-class Weapon
+class Weapon : public cocos2d::CCSprite
 {
 private:
 	float firingInterval;
 	float coolDown;
 
 public:
-	Weapon(float firingInterval);
+	void initWeapon();
+	void setFireInterval(float firingInterval);
 
 	bool weaponReady(float delta);
-	virtual void fire(float delta)=0;
+	void rotateWeapon(cocos2d::CCPoint p);
 };
 
 #endif

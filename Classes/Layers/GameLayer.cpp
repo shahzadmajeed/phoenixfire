@@ -1,48 +1,39 @@
-#include "HeroLayer.h"
+#include "GameLayer.h"
 
 USING_NS_CC;
 
-HeroLayer* HeroLayer::create(Plane *hero)
-{
-	HeroLayer *heroLayer = new HeroLayer();
-	if (heroLayer && heroLayer->init(hero))
-	{
-		heroLayer->autorelease();
-		return heroLayer;
-	}
-	CC_SAFE_DELETE(heroLayer);
-	return NULL;
-}
-
-bool HeroLayer::init(Plane *hero)
+bool GameLayer::init()
 {
 	if (!CCLayer::init()) return false;
 
 	// init Hero
-	this->hero = hero;
-	addChild(this->hero, 0, Tags::HERO);
+	TestHero1 *mhero = TestHero1::create();
+	mhero->setPosition(ccp(380,100));
+	this->hero = mhero;
+	addChild(this->hero);
 
 	setTouchEnabled(true);
     
     return true;
 }
 
-void HeroLayer::registerWithTouchDispatcher()
+// Let user move hero
+void GameLayer::registerWithTouchDispatcher()
 {
 	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
-bool HeroLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
 	return true;
 }
 
-void HeroLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+void GameLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
 	moveHero(pTouch);
 }
 
-void HeroLayer::moveHero(CCTouch *pTouch)
+void GameLayer::moveHero(CCTouch *pTouch)
 {
 	CCPoint currentPoint = pTouch->getLocationInView();
 	currentPoint = CCDirector::sharedDirector()->convertToGL(currentPoint);
@@ -52,5 +43,5 @@ void HeroLayer::moveHero(CCTouch *pTouch)
 	CCPoint distance = ccpSub(currentPoint, previousPoint);
 	CCPoint destination = ccpAdd(hero->getPosition(), distance);
 
-	hero->moveTo(destination);
+	hero->setPosition(destination);
 }

@@ -4,15 +4,16 @@
 #include "cocos2d.h"
 #include "Weapon.h"
 #include "../Units/Plane.h"
-#include "../Layers/HeroLayer.h"
+#include "../Layers/GameLayer.h"
 #include "Game.h"
 
 class testWeapon : public Weapon
 {
 public:
-	testWeapon();
+	CREATE_FUNC(testWeapon);
+	virtual bool init();
 
-	void fire(float delta);
+	virtual void update(float delta);
 };
 
 #endif

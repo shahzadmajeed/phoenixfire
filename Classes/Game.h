@@ -5,7 +5,7 @@
 #include <map>
 
 #include "cocos2d.h"
-#include "Layers/HeroLayer.h"
+#include "Layers/GameLayer.h"
 
 class Game
 {

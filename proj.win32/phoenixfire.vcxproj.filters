@@ -30,9 +30,6 @@
     <ClCompile Include="..\Classes\Layers\BackgroundLayer.cpp">
       <Filter>Classes\Layers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Layers\HeroLayer.cpp">
-      <Filter>Classes\Layers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Units\TestHero1.cpp">
       <Filter>Classes\Units</Filter>
     </ClCompile>
@@ -51,6 +48,9 @@
     <ClCompile Include="..\Classes\Weapons\testWeapon.cpp">
       <Filter>Classes\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Layers\GameLayer.cpp">
+      <Filter>Classes\Layers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -63,9 +63,6 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Layers\BackgroundLayer.h">
-      <Filter>Classes\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Layers\HeroLayer.h">
       <Filter>Classes\Layers</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Units\TestHero1.h">
@@ -85,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Weapons\testWeapon.h">
       <Filter>Classes\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Layers\GameLayer.h">
+      <Filter>Classes\Layers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

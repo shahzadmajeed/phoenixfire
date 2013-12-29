@@ -2,18 +2,12 @@
 
 USING_NS_CC;
 
-bool Plane::initWithFile(const char *pszFilename)
+void Plane::initPlane()
 {
-	if (CCSprite::initWithFile(pszFilename))
-	{
-		this->setLife(100);
-		this->setStatus(Plane::Status::ALIVE);
-		this->scheduleUpdate();
-
-		return true;
-	}
-	return false;
+	this->setLife(100);
+	this->setStatus(Plane::Status::ALIVE);
 }
+
 void Plane::setStatus(Status status)
 {
 	this->status = status;
@@ -26,8 +20,8 @@ Plane::Status Plane::getStatus()
 
 void Plane::setLife(float life)
 {
+	if (life < 0) life = 0;
 	this->life = life;
-	if (life <= 0) this->setStatus(Plane::DEAD);
 }
 
 float Plane::getLife()
@@ -35,28 +29,11 @@ float Plane::getLife()
 	return this->life;
 }
 
-void Plane::addWeapon(Weapon *weapon)
+void Plane::decreaseLife(float value)
 {
-	weapons.push_back(weapon);
-}
-
-void Plane::update(float delta)
-{
-	if (getStatus() == Plane::DEAD) return;
-
-	std::vector<Weapon*>::iterator iter = weapons.begin();
-	while (iter != weapons.end())
-	{
-		Weapon *weapon = *iter;
-		weapon->fire(delta);
-		iter++;
+	this->life -= value;
+	if (life <= 0){
+		this->setStatus(Plane::DEAD);
+		this->life = 0;
 	}
-}
-
-void Plane::moveTo(CCPoint destination)
-{
-	if (getStatus() == Plane::DEAD) return;
-	
-	CCLog("hero moving");
-	setPosition(destination);
 }

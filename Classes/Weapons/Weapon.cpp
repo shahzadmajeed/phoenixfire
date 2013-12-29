@@ -2,9 +2,14 @@
 
 USING_NS_CC;
 
-Weapon::Weapon(float firingInterval)
+void Weapon::initWeapon()
 {
 	this->coolDown = 0;
+	this->firingInterval = 1;
+}
+
+void Weapon::setFireInterval(float firingInterval)
+{
 	this->firingInterval = firingInterval;
 }
 
@@ -15,18 +20,15 @@ bool Weapon::weaponReady(float delta)
 	if (coolDown > firingInterval)
 	{
 		coolDown = 0;
-		CCLog("Weapon ready");
 		return true;
 	}
 	return false;
 }
 
-// make it a pure virtual function
-//void Weapon::fire(float delta)
-//{
-//	coolDown += delta;
-//	if (coolDown > firingInterval)
-//	{
-//
-//	}
-//}
+void Weapon::rotateWeapon(CCPoint targetPos)
+{
+	CCPoint weaponPos = this->getParent()->convertToWorldSpace(getPosition());
+	CCPoint diff = ccpSub(weaponPos, targetPos);
+
+	setRotation(-1 * CC_RADIANS_TO_DEGREES(diff.getAngle() + M_PI / 2));
+}

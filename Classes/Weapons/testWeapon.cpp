@@ -2,18 +2,29 @@
 
 USING_NS_CC;
 
-// also call super class's constructor to set fire interval
-testWeapon::testWeapon(): Weapon(1)
+bool testWeapon::init()
 {
+	if(!initWithFile("hero.png")) return false;
+
+	initWeapon();
+	setFireInterval(0.5f);
+	setScale(0.3f);
+
+	this->scheduleUpdate();
+
+	return true;
 }
 
 // this evil weapon will hurt his owner!
-void testWeapon::fire(float delta)
+void testWeapon::update(float delta)
 {
+	rotateWeapon(ccp(370, 1280));
+
 	if (weaponReady(delta)) {
-		CCLayer *layer = Game::sharedGame->getLayer("HeroLayer");
-		Plane *plane = (Plane*)layer->getChildByTag(HeroLayer::Tags::HERO);
-		plane->setLife(plane->getLife() - 10);
+		GameLayer *layer = (GameLayer*)Game::sharedGame->getLayer("GameLayer");
+		Plane *plane = (Plane*)layer->hero;
+
+		plane->decreaseLife(10);
 		CCLog("TestWeapon fired! Now our hero's life remain %f", plane->getLife());
 	}
 }

@@ -2,14 +2,16 @@
 
 USING_NS_CC;
 
-TestHero1* TestHero1::create()
+bool TestHero1::init()
 {
-    TestHero1 *pobSprite = new TestHero1();
-    if (pobSprite && pobSprite->initWithFile("hero.png"))
-    {
-        pobSprite->autorelease();
-        return pobSprite;
-    }
-    CC_SAFE_DELETE(pobSprite);
-    return NULL;
+    if (!initWithFile("hero.png")) return false;
+	initPlane();
+
+	testWeapon *mainWeapon = testWeapon::create();
+	CCPoint p = convertToNodeSpace(getPosition());
+	mainWeapon->setPosition(p);
+
+	addChild(mainWeapon);
+
+	return true;
 }
