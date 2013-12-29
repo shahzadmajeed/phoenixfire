@@ -16,6 +16,9 @@
     <Filter Include="Classes\Weapons">
       <UniqueIdentifier>{5223e902-e873-43ee-94cd-3282d88d90e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Weapons\Bullets">
+      <UniqueIdentifier>{81a0cc6a-ccf9-4050-842e-b11f5e0aa358}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,9 +42,6 @@
     <ClCompile Include="..\Classes\Weapons\Weapon.cpp">
       <Filter>Classes\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Weapons\Bullet.cpp">
-      <Filter>Classes\Weapons</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Game.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -50,6 +50,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Layers\GameLayer.cpp">
       <Filter>Classes\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Units\TestEnemy.cpp">
+      <Filter>Classes\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Weapons\Bullets\Bullet.cpp">
+      <Filter>Classes\Weapons\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Weapons\Bullets\TestBullet.cpp">
+      <Filter>Classes\Weapons\Bullets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +83,6 @@
     <ClInclude Include="..\Classes\Weapons\Weapon.h">
       <Filter>Classes\Weapons</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Weapons\Bullet.h">
-      <Filter>Classes\Weapons</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Game.h">
       <Filter>Classes</Filter>
     </ClInclude>
@@ -85,6 +91,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Layers\GameLayer.h">
       <Filter>Classes\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Units\TestEnemy.h">
+      <Filter>Classes\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Weapons\Bullets\Bullet.h">
+      <Filter>Classes\Weapons\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Weapons\Bullets\TestBullet.h">
+      <Filter>Classes\Weapons\Bullets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

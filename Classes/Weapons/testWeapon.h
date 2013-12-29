@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "Weapon.h"
 #include "../Units/Plane.h"
-#include "../Layers/GameLayer.h"
+#include "Bullets/TestBullet.h"
 #include "Game.h"
 
 class testWeapon : public Weapon

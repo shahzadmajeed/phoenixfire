@@ -17,6 +17,16 @@ bool GameLayer::init()
     return true;
 }
 
+Plane* GameLayer::getHero()
+{
+	return hero;
+}
+
+void GameLayer::addBullet(Bullet *bullet)
+{
+	addChild(bullet);
+}
+
 // Let user move hero
 void GameLayer::registerWithTouchDispatcher()
 {
