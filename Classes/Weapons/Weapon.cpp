@@ -1,9 +1,12 @@
 #include "Weapon.h"
 
+#include "Game.h"
+
 USING_NS_CC;
 
 void Weapon::initWeapon()
 {
+	this->rotateEnabled = false;
 	this->coolDown = 0;
 	this->firingInterval = 1;
 }
@@ -11,6 +14,16 @@ void Weapon::initWeapon()
 void Weapon::setFireInterval(float firingInterval)
 {
 	this->firingInterval = firingInterval;
+}
+
+void Weapon::enableRotate()
+{
+	this->rotateEnabled = true;
+}
+
+bool Weapon::isRotateEnabled()
+{
+	return rotateEnabled;
 }
 
 // children can run this function to get if the weapon ready to fire
@@ -25,10 +38,25 @@ bool Weapon::weaponReady(float delta)
 	return false;
 }
 
-void Weapon::rotateWeapon(CCPoint targetPos)
+void Weapon::rotateWeapon()
 {
-	CCPoint weaponPos = this->getParent()->convertToWorldSpace(getPosition());
-	CCPoint diff = ccpSub(weaponPos, targetPos);
+	if(!isRotateEnabled()) return;
 
-	setRotation(-1 * CC_RADIANS_TO_DEGREES(diff.getAngle() + M_PI / 2));
+	CCPoint targetPos;
+	if(getParent()->isEqual(Game::sharedGame->getHero()))
+	{
+		// if the plane which owns this weapon is hero, then aim at the nearest enemy
+		// TO BE DONE
+		// targetPos = Game::sharedGame->getHero()->getPosition();
+	}
+	else
+	{
+		// else aim at hero
+		targetPos = Game::sharedGame->getHero()->getPosition();
+	}
+
+	CCPoint weaponPos = this->getParent()->convertToWorldSpace(getPosition());
+	CCPoint diff = ccpSub(targetPos, weaponPos);
+
+	setRotation(-1 * CC_RADIANS_TO_DEGREES(diff.getAngle()));
 }

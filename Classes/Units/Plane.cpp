@@ -2,13 +2,17 @@
 
 USING_NS_CC;
 
-void Plane::initPlane()
+bool Plane::init(const char *name)
 {
+	if (!CCArmature::init(name)) return false;
+
 	this->setLife(100);
-	this->setStatus(Plane::Status::ALIVE);
+	this->status = ALIVE;
+
+	return true;
 }
 
-void Plane::setStatus(Status status)
+void Plane::setStatus(enum Status status)
 {
 	this->status = status;
 }
@@ -16,6 +20,11 @@ void Plane::setStatus(Status status)
 Plane::Status Plane::getStatus()
 {
 	return status;
+}
+
+void Plane::collisionDetect(Bullet *bullet)
+{
+	// to be done
 }
 
 void Plane::setLife(float life)

@@ -33,9 +33,6 @@
     <ClCompile Include="..\Classes\Layers\BackgroundLayer.cpp">
       <Filter>Classes\Layers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Units\TestHero1.cpp">
-      <Filter>Classes\Units</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Units\Plane.cpp">
       <Filter>Classes\Units</Filter>
     </ClCompile>
@@ -45,20 +42,20 @@
     <ClCompile Include="..\Classes\Game.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Weapons\testWeapon.cpp">
-      <Filter>Classes\Weapons</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Layers\GameLayer.cpp">
       <Filter>Classes\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Units\TestEnemy.cpp">
-      <Filter>Classes\Units</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Weapons\Bullets\Bullet.cpp">
       <Filter>Classes\Weapons\Bullets</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Weapons\Bullets\TestBullet.cpp">
-      <Filter>Classes\Weapons\Bullets</Filter>
+    <ClCompile Include="..\Classes\Units\Enemy.cpp">
+      <Filter>Classes\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Units\PlaneFactory.cpp">
+      <Filter>Classes\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Weapons\Cannon.cpp">
+      <Filter>Classes\Weapons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +71,6 @@
     <ClInclude Include="..\Classes\Layers\BackgroundLayer.h">
       <Filter>Classes\Layers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Units\TestHero1.h">
-      <Filter>Classes\Units</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Units\Plane.h">
       <Filter>Classes\Units</Filter>
     </ClInclude>
@@ -86,20 +80,20 @@
     <ClInclude Include="..\Classes\Game.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Weapons\testWeapon.h">
-      <Filter>Classes\Weapons</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Layers\GameLayer.h">
       <Filter>Classes\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Units\TestEnemy.h">
-      <Filter>Classes\Units</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Weapons\Bullets\Bullet.h">
       <Filter>Classes\Weapons\Bullets</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Weapons\Bullets\TestBullet.h">
-      <Filter>Classes\Weapons\Bullets</Filter>
+    <ClInclude Include="..\Classes\Units\Enemy.h">
+      <Filter>Classes\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Units\PlaneFactory.h">
+      <Filter>Classes\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Weapons\Cannon.h">
+      <Filter>Classes\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

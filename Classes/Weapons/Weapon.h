@@ -6,6 +6,7 @@
 class Weapon : public cocos2d::CCSprite
 {
 private:
+	bool rotateEnabled;
 	float firingInterval;
 	float coolDown;
 
@@ -13,8 +14,11 @@ public:
 	void initWeapon();
 	void setFireInterval(float firingInterval);
 
+	void enableRotate();
+	bool isRotateEnabled();
+
 	bool weaponReady(float delta);
-	void rotateWeapon(cocos2d::CCPoint p);
+	void rotateWeapon();
 };
 
 #endif

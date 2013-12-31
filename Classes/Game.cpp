@@ -6,8 +6,18 @@ Game *Game::sharedGame = new Game();
 
 Game::Game(void)
 {
+	hero = NULL;
 }
 
+void Game::setHero(Plane *hero)
+{
+	this->hero = hero;
+}
+
+Plane* Game::getHero()
+{
+	return this->hero;
+}
 
 void Game::addLayer(const char *key, CCLayer *layer)
 {

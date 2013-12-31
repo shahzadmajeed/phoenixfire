@@ -1,20 +1,20 @@
-#include "TestBullet.h"
+#include "TestBullet1.h"
 
 USING_NS_CC;
 
-bool TestBullet::init()
+bool TestBullet1::init()
 {
-	if(!initWithSpriteFrameName("bullet.png")) return false;
+	if(!initWithSpriteFrameName("enemy_bullet.png")) return false;
 
 	Bullet::initBullet();
 
 	setDamage(10);
-	speed = 1200;
+	speed = 700;
 
 	return true;
 }
 
-void TestBullet::update(float delta)
+void TestBullet1::update(float delta)
 {
 	if(getPositionY() > 1280 || getPositionX() < 0 ||
 		getPositionX() > 760 || getPositionY() < 0)

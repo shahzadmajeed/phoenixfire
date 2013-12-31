@@ -3,15 +3,13 @@
 
 #include "cocos2d.h"
 #include "../Units/Plane.h"
-#include "../Weapons/Bullets/Bullet.h"
-#include "Units/TestHero1.h"
-#include "Weapons/testWeapon.h"
+#include "Weapons/Bullets/Bullet.h"
 
 class GameLayer : public cocos2d::CCLayer
 {
 private:
-	Plane *hero;
-	cocos2d::CCSpriteBatchNode *bulletBatch;
+	cocos2d::CCArray *enemies;
+	cocos2d::CCSpriteBatchNode *gameBatch;
 
 	bool init();
 
@@ -21,7 +19,11 @@ private:
 	void moveHero(cocos2d::CCTouch *pTouch);
 
 public:
+	GameLayer();
 	CREATE_FUNC(GameLayer);
+
+	void initHero();
+	void createEnemy();
 
 	Plane* getHero();
 	void addBullet(Bullet *bullet);

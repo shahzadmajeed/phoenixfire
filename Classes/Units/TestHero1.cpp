@@ -4,7 +4,8 @@ USING_NS_CC;
 
 bool TestHero1::init()
 {
-    if (!initWithFile("hero.png")) return false;
+	
+    if (!Plane::init("hero1")) return false;
 	initPlane();
 
 	testWeapon *mainWeapon = testWeapon::create();
