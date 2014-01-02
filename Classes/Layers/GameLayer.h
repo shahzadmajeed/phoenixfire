@@ -8,7 +8,6 @@
 class GameLayer : public cocos2d::CCLayer
 {
 private:
-	cocos2d::CCArray *enemies;
 	cocos2d::CCSpriteBatchNode *gameBatch;
 
 	bool init();

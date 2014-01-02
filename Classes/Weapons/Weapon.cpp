@@ -47,7 +47,7 @@ void Weapon::rotateWeapon()
 	{
 		// if the plane which owns this weapon is hero, then aim at the nearest enemy
 		// TO BE DONE
-		// targetPos = Game::sharedGame->getHero()->getPosition();
+		targetPos = Game::sharedGame->getNearestEnemy()->getPosition();
 	}
 	else
 	{

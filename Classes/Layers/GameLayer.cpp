@@ -10,7 +10,6 @@ USING_NS_CC;
 GameLayer::GameLayer()
 {
 	gameBatch = NULL;
-	enemies = NULL;
 }
 
 bool GameLayer::init()
@@ -18,9 +17,7 @@ bool GameLayer::init()
 	if (!CCLayer::init()) return false;
 
 	gameBatch = CCSpriteBatchNode::create("gameTexture.png");
-	this->addChild(gameBatch);
-
-	enemies = CCArray::create();
+	this->addChild(gameBatch, 4);
 
 	initHero();
 	createEnemy();
@@ -45,8 +42,8 @@ void GameLayer::initHero()
 
 	Game::sharedGame->setHero(mhero);
 	mhero->setPosition(ccp(380,100));
-	this->addChild(mhero);
-	this->addChild(fire);
+	this->addChild(mhero, 2);
+	this->addChild(fire, 2);
 }
 
 void GameLayer::createEnemy()
@@ -55,8 +52,9 @@ void GameLayer::createEnemy()
 
 	Plane *mEnemy = factory.createPlane(PlaneFactory::PlaneType::ENEMY1);
 	mEnemy->setPosition(ccp(390, 1400));
-	enemies->addObject(mEnemy);
-	this->addChild(mEnemy);
+
+	Game::sharedGame->addEnemy(mEnemy);
+	this->addChild(mEnemy, 1);
 }
 
 void GameLayer::addBullet(Bullet *bullet)
