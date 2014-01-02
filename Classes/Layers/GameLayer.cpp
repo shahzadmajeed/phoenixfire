@@ -2,6 +2,8 @@
 
 #include "Units/PlaneFactory.h"
 #include "Game.h"
+#include "Units/Enginefire.h"
+#include "particle_nodes/CCParticleSystemQuad.h"
 
 USING_NS_CC;
 
@@ -39,9 +41,12 @@ void GameLayer::initHero()
 	}		
 
 	Plane *mhero = factory.createPlane(PlaneFactory::PlaneType::HERO1);
-	mhero->setPosition(ccp(380,100));
+	Enginefire *fire = Enginefire::create(mhero, 0, 0.6f, ccp(0, -100));
+
 	Game::sharedGame->setHero(mhero);
+	mhero->setPosition(ccp(380,100));
 	this->addChild(mhero);
+	this->addChild(fire);
 }
 
 void GameLayer::createEnemy()

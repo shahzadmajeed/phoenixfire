@@ -4,10 +4,10 @@
     {
       "strVersion": "1.1.0.0",
       "version": 1.1,
-      "name": "hero1",
+      "name": "enemy1",
       "bone_data": [
         {
-          "name": "Layer9",
+          "name": "Layer10",
           "parent": "",
           "x": 0.0,
           "y": 0.0,
@@ -21,7 +21,7 @@
           "effectbyskeleton": false,
           "display_data": [
             {
-              "name": "hero1res/hero.png",
+              "name": "enemyres/enemy1.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -41,7 +41,7 @@
   ],
   "animation_data": [
     {
-      "name": "hero1",
+      "name": "enemy1",
       "mov_data": [
         {
           "name": "Animation1",
@@ -53,7 +53,7 @@
           "sc": 1.0,
           "mov_bone_data": [
             {
-              "name": "Layer9",
+              "name": "Layer10",
               "dl": 0.0,
               "frame_data": [
                 {
@@ -78,15 +78,15 @@
   ],
   "texture_data": [
     {
-      "name": "hero1res/hero",
-      "width": 152.0,
-      "height": 133.0,
-      "pX": 0.5065789,
-      "pY": 0.7593985,
+      "name": "enemyres/enemy1",
+      "width": 208.0,
+      "height": 223.0,
+      "pX": 0.5,
+      "pY": 0.5,
       "plistFile": ""
     }
   ],
   "config_file_path": [
-    "hero10.plist"
+    "enemy10.plist"
   ]
 }

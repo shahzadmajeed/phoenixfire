@@ -3,6 +3,8 @@
 #include "Weapons/Cannon.h"
 #include "Units/Enemy.h"
 
+USING_NS_CC;
+
 Plane* PlaneFactory::createPlane(PlaneType type)
 {
 	Plane *unit = NULL;
@@ -15,7 +17,7 @@ Plane* PlaneFactory::createPlane(PlaneType type)
 
 			Cannon *mainWeapon = Cannon::create();
 			mainWeapon->setRotation(-90);
-			mainWeapon->setPosition(ccp(-5, 5));
+			mainWeapon->setPosition(ccp(0, 5));
 
 			Cannon *leftWeapon = Cannon::create();
 			leftWeapon->setFireInterval(0.2f);
@@ -47,14 +49,14 @@ Plane* PlaneFactory::createPlane(PlaneType type)
 		}
 	case PlaneType::ENEMY1:
 		{
-			unit = Enemy::create("hero1");
+			unit = Enemy::create("enemy1");
 
 			Cannon *weapon1 = Cannon::create();
 			weapon1->setFireInterval(0.4f);
 			weapon1->enableRotate();
 			weapon1->setPosition(unit->convertToNodeSpace(unit->getPosition()));
 
-			unit->addChild(weapon1);
+			unit->addChild(weapon1, 2);
 
 			return unit;
 		}

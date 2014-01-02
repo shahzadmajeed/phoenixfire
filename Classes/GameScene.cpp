@@ -12,6 +12,7 @@ bool GameScene::init()
 
 	// add texture
 	extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("hero1/hero10.png","hero1/hero10.plist","hero1/hero1.ExportJson");
+	extension::CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("enemy1/enemy10.png","enemy1/enemy10.plist","enemy1/enemy1.ExportJson");
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("gameTexture.plist");
 
 	// Preparing BackgroundLayer
